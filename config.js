@@ -1,9 +1,9 @@
 // GEO CONFIGURATION: change this file without changing the page layout.
 window.LANDING_CONFIG = {
   locale: 'ru-RU',
-  currency: 'RUB',
-  price: null, // replace with verified offer price, e.g. 1990
-  phonePlaceholder: '+7 (___) ___-__-__',
+  currency: 'USD',
+  price: 27, // replace with verified offer price, e.g. 1990
+  oldPrice: 54, // illustrative original price\n  phonePlaceholder: '+7 (___) ___-__-__',
   images: {
     // hero: '/assets/hero.jpg',
     // symptoms: ['/assets/s1.jpg','/assets/s2.jpg','/assets/s3.jpg','/assets/s4.jpg']
