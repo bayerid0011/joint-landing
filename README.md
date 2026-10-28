@@ -15,3 +15,11 @@ Edit `config.js`: `locale`, `currency`, `price`, `phonePlaceholder`, `images`, `
 
 ## Deployment
 Upload `index.html` and `config.js` together to any static hosting service (Netlify, Cloudflare Pages, GitHub Pages). Form submission currently only displays a local demo confirmation and sends no data.
+
+## Design v2.0 (October 2026)
+- Larger mobile typography and controls for comfortable reading.
+- Refined hero, product placeholder, ingredient/benefit cards, FAQ and order form.
+- Responsive layouts and reduced-motion support.
+- GEO customization remains in `config.js` without changing the page structure.
+- Photos are currently third-party illustrative images; replace with licensed consistent assets before campaigns.
+- GitHub Pages deploys from `main` / repository root. Allow time for the latest commit to appear.
