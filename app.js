@@ -23,6 +23,7 @@
   // To enable Meta Pixel in production, configure metaPixelId and the consent system.
   // Pixel is intentionally not auto-loaded on this demo without a valid consent flow.
   setText('eyebrow',o.eyebrow); setText('headline',o.headline); setText('description',o.description);
+  ['painTitle','painIntro','painFootnote','introTitle','introCopy','formIntro'].forEach(id=>setText(id,o[id]));
   setText('chip-units',o.units);setText('chip-servings',o.servings);
   setText('dailyUse',o.dailyUse);setText('servings',o.servings);
   setText('orderName',`${o.brand} ${o.shortName}`);setText('orderUnits',o.units);
@@ -38,6 +39,12 @@
   setImage('orderProduct',o.image,`${o.brand} ${o.shortName}`);
   setImage('lifestyleImage',o.lifestyleImage,'Прогулка на природе');
   document.querySelectorAll('a[data-track]').forEach(el=>el.addEventListener('click',()=>track('cta_click',{placement:el.closest('.mobile-sticky')?'sticky':'hero'})));
+  $('painGrid').replaceChildren(...(o.painPoints||[]).map(item=>{
+    const card=document.createElement('article');card.className='pain-card';
+    const icon=document.createElement('span');icon.className='pain-icon';icon.textContent=item.icon;
+    const title=document.createElement('h3');title.textContent=item.title;
+    const copy=document.createElement('p');copy.textContent=item.text;card.append(icon,title,copy);return card;
+  }));
   $('highlights').replaceChildren(...o.highlights.map(item=>{
     const div=document.createElement('article');div.className='highlight';
     const ico=document.createElement('span');ico.className='symbol';ico.textContent=item.symbol;
