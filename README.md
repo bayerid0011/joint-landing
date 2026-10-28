@@ -1,25 +1,24 @@
-# Joint Landing — mobile-first demo
+# Nutra landing — NOW Glucosamine & Chondroitin with MSM
 
-Open `index.html` in a browser. The page is responsive and works as a static site. External Unsplash photos require internet access.
+Адаптивная HTML/CSS/JS страница. Для перехода на другой товар редактируйте **`config.js`** и замените `assets/product.webp` и `assets/lifestyle.webp`. Разметка и стили не зависят от конкретного состава, бренда и цены.
 
-## GEO adaptation
-Edit `config.js`: `locale`, `currency`, `price`, `phonePlaceholder`, `images`, `fields`, `translations`. The visual design remains unchanged. Text for other languages can be replaced using `translations` keys from `data-i18n` attributes.
+## Начало работы
 
-## Important before going live
-- Replace demo product and all ingredient references with actual product data and permitted claims.
-- Replace placeholder imagery with licensed product and lifestyle photos.
-- Add real seller details, privacy policy, delivery/returns and any country-specific mandatory disclosures.
-- Replace demo form handler with an HTTPS backend/CRM integration, anti-spam controls, secure storage, and legally valid consent flow.
-- Verify local advertising/health claims and translations.
-- Never use invented testimonials, scarcity, or discounts.
+Откройте `index.html` через локальный HTTP сервер. Секция цены выводит **«Стоимость уточняется»** пока `price: null`: реальная цена пользователем не предоставлена. Никаких вымышленных скидок, отзывов, сертификатов и таймеров нет.
 
-## Deployment
-Upload `index.html` and `config.js` together to any static hosting service (Netlify, Cloudflare Pages, GitHub Pages). Form submission currently only displays a local demo confirmation and sends no data.
+В `config.js` заполните `seller`, `sellerEmail`, `privacyUrl`, `termsUrl`, `orderEndpoint`, а также реальные `delivery`, `payment`, `price` и `oldPrice` (если применимо). Форма **не отправляет данные** до их настройки. Укажите реальные условия обработки персональных данных и сделайте соответствующий consent-flow до подключения аналитики.
 
-## Design v2.0 (October 2026)
-- Larger mobile typography and controls for comfortable reading.
-- Refined hero, product placeholder, ingredient/benefit cards, FAQ and order form.
-- Responsive layouts and reduced-motion support.
-- GEO customization remains in `config.js` without changing the page structure.
-- Photos are currently third-party illustrative images; replace with licensed consistent assets before campaigns.
-- GitHub Pages deploys from `main` / repository root. Allow time for the latest commit to appear.
+## Аналитика
+
+На клиенте создается `window.dataLayer` со событиями: `landing_view`, `cta_click`, `lead_validation_error`, `demo_form_attempt`, `lead_submit_success`, `lead_submit_error`. Успех учитывается только при успешном HTTP-ответе обработчика. URL-метки UTM передаются вместе с заявкой. Для GTM добавьте собственный контейнер и настройте события. Meta Pixel **не загружается автоматически**, поскольку корректное включение требует согласия и законной настройки.
+
+## Изображения
+
+- `assets/product.webp` — точное изображение упаковки от пользователя.
+- `assets/lifestyle.webp` — специально созданная стилизованная lifestyle-фотография для hero, иллюстративная, не изображение пользователя.
+
+## Источник сведений
+
+Официальный NOW Foods: https://www.nowfoods.com/products/supplements/glucosamine-chondroitin-msm-capsules .
+
+На порцию: глюкозамин сульфат 1 100 мг, хондроитин сульфат 1 200 мг, MSM 300 мг. 90 капсул / 30 порций, приём 3 капсулы в день. Содержит ракообразных; предупреждения подробно указаны в `config.js`. Перед запуском адаптируйте медицинские утверждения под юридические требования выбранного GEO и сверяйте актуальную упаковку конкретной партии.

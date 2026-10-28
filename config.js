@@ -1,18 +1,44 @@
-// GEO CONFIGURATION: change this file without changing the page layout.
-window.LANDING_CONFIG = {
-  locale: 'ru-RU',
-  currency: 'USD',
-  price: 27, // replace with verified offer price, e.g. 1990
-  oldPrice: 54, // illustrative original price\n  phonePlaceholder: '+7 (___) ___-__-__',
-  images: {
-    // hero: '/assets/hero.jpg',
-    // symptoms: ['/assets/s1.jpg','/assets/s2.jpg','/assets/s3.jpg','/assets/s4.jpg']
-  },
-  fields: [], // e.g. [{name:'city',label:'Город',required:false}]
-  translations: {
-    // Override any data-i18n key here, e.g. heroCTA: 'Получить информацию'
-  },
-  legal: {
-    // Add real seller identity, privacy-policy URL, delivery/return terms before launch.
-  }
+/* ЕДИНЫЙ ФАЙЛ ДЛЯ АДАПТАЦИИ ПОД ДРУГОЙ НУТРА-ОФФЕР.
+   Измените фотографии в /assets, тексты, дозировки, цену и контакты.
+   Не добавляйте непроверенные лечебные обещания или фиктивные отзывы. */
+window.OFFER = {
+  id: 'now-glucosamine-chondroitin-msm-90',
+  brand: 'NOW Foods',
+  shortName: 'Glucosamine & Chondroitin with MSM',
+  headline: 'Поддержка суставов — часть активного образа жизни',
+  eyebrow: 'ДИЕТИЧЕСКАЯ ДОБАВКА · ДЛЯ ВЗРОСЛЫХ',
+  description: 'Три известных компонента для нутритивной поддержки здоровья суставов в одной формуле.',
+  image: 'assets/product.webp',
+  lifestyleImage: 'assets/lifestyle.webp',
+  currency: '$',
+  price: null, // Укажите реальную цену, например 27; null = «Уточнить стоимость»
+  oldPrice: null, // Указывать только при реально подтвержденной старой цене
+  units: '90 капсул',
+  servings: '30 порций',
+  dailyUse: '3 капсулы в день',
+  country: 'США',
+  facts: [
+    { value: '1 100 мг', name: 'Глюкозамина сульфат', note: 'На порцию из 3 капсул' },
+    { value: '1 200 мг', name: 'Хондроитина сульфат', note: 'На порцию из 3 капсул' },
+    { value: '300 мг', name: 'МСМ', note: 'На порцию из 3 капсул' }
+  ],
+  highlights: [
+    { symbol: '✳', title: 'Три компонента', text: 'Глюкозамин, хондроитин и МСМ в одной формуле.' },
+    { symbol: '◉', title: 'На каждый день', text: '90 капсул — 30 порций по инструкции.' },
+    { symbol: '✓', title: 'Контроль качества', text: 'Произведено и проверено на качество в США.' }
+  ],
+  benefits: ['Поддержка нормальной подвижности суставов', 'Нутритивная поддержка комфорта при движении', 'Информация о составе и дозировке без скрытых обещаний'],
+  otherIngredients: 'Гипромеллоза (целлюлозная капсула), стеариновая кислота растительного происхождения.',
+  warning: 'Содержит моллюсков/ракообразных (креветки, крабы). При аллергии на них не использовать. Только для взрослых. Во время беременности, грудного вскармливания, при приёме лекарств или заболеваниях (особенно глаукоме) проконсультироваться с врачом. Хранить в недоступном для детей месте. После открытия хранить в сухом прохладном месте.',
+  disclaimer: 'Диетическая добавка. Не предназначена для диагностики, лечения или профилактики заболеваний. Информация не заменяет консультацию специалиста.',
+  manufacturer: 'NOW Foods',
+  seller: '', // Укажите настоящего продавца перед запуском
+  sellerEmail: '', // Укажите реальный email продавца
+  delivery: 'Условия и стоимость доставки уточняются при оформлении.',
+  payment: 'Способ оплаты уточняется перед подтверждением заказа.',
+  privacyUrl: '', // Вставьте ссылку на настоящую политику конфиденциальности
+  termsUrl: '', // Вставьте ссылку на настоящие условия продажи
+  orderEndpoint: '', // URL своего backend обработчика; пока пусто — ДЕМО
+  metaPixelId: '', // Настоящий Pixel ID; пока пусто — Meta Pixel выключен
+  locale: 'ru'
 };
