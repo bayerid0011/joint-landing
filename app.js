@@ -23,7 +23,7 @@
   // To enable Meta Pixel in production, configure metaPixelId and the consent system.
   // Pixel is intentionally not auto-loaded on this demo without a valid consent flow.
   setText('eyebrow',o.eyebrow); setText('headline',o.headline); setText('description',o.description);
-  ['painTitle','painIntro','painFootnote','introTitle','introCopy','formIntro'].forEach(id=>setText(id,o[id]));
+  ['painTitle','painIntro','painFootnote','introTitle','introCopy','formIntro','decisionTitle','decisionIntro'].forEach(id=>setText(id,o[id]));
   setText('chip-units',o.units);setText('chip-servings',o.servings);
   setText('dailyUse',o.dailyUse);setText('servings',o.servings);
   setText('orderName',`${o.brand} ${o.shortName}`);setText('orderUnits',o.units);
@@ -50,6 +50,13 @@
     const ico=document.createElement('span');ico.className='symbol';ico.textContent=item.symbol;
     const h=document.createElement('h3');h.textContent=item.title;
     const p=document.createElement('p');p.textContent=item.text;div.append(ico,h,p);return div;
+  }));
+  $('decisionGrid').replaceChildren(...(o.decisionPoints||[]).map(item=>{
+    const card=document.createElement('article');card.className='decision-card';
+    const num=document.createElement('span');num.className='decision-number';num.textContent=item.number;
+    const title=document.createElement('h3');title.textContent=item.title;
+    const copy=document.createElement('p');copy.textContent=item.text;
+    card.append(num,title,copy);return card;
   }));
   $('factStack').replaceChildren(...o.facts.map(item=>{
     const div=document.createElement('div');div.className='fact';const v=document.createElement('b');v.textContent=item.value;
