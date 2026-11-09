@@ -1,21 +1,36 @@
-# NOW Foods — Nutra Direct Response Landing (editable template)
+# MX JOINTS — 4 оффера · 1 шаблон · Keitaro
 
-A real responsive HTML/CSS/JS landing page (no flattened mockup) for **NOW Foods Glucosamine & Chondroitin with MSM, 90 capsules**.
+## Структура
+- `/mx/g1/` — Hondrovix 789 MXN · payout $27 · AR 30–35% · SkyLead 1671
+- `/mx/g2/` — Hondrovix 590 MXN · payout $25 · AR 25–30% · SkyLead 1670
+- `/mx/c1/` — Wellnexis Joints 590 MXN · payout $25 · AR 25–30% · SkyLead 919
+- `/mx/c2/` — Wellnexis Joints 789 MXN · payout $27 · AR 25–30% · SkyLead 1319
 
-## Change offer in `config.js`
-Change `id`, `brand`, `shortName`, `headline`, `description`, `facts`, `painPoints`, `decisionPoints`, `highlights`, `dailyUse`, `units`, `servings`, `warning`, `disclaimer`, and product images. Preserve truthful product claims and regulatory notices for each market.
+`index.html` в корне — внутренняя страница выбора 4 вариантов, **не рекламная**.
 
-Put your actual offer's photo at `assets/product.webp`, and your licensed lifestyle photo at `assets/lifestyle.webp`; update `image` / `lifestyleImage` to match filenames. Images are standalone files, not screenshot backgrounds.
+## Конфигурации
+Каждый оффер: `/mx/<код>/config.js`. Общие шаблон и стили — `template.html`, `styles.css`, `app.js`.
+В конфиге менять `price`, `product`, `headline`, `description`, `features`, `ingredients`, `steps`, `image`, `orderEndpoint`.
+При смене дизайна изменить шаблон и заново скопировать его в `mx/*/index.html`.
 
-## Before accepting leads
-- Set actual `price` / `oldPrice` only when substantiated; `null` displays a price inquiry instead.
-- Set `seller`, `sellerEmail`, `privacyUrl`, `termsUrl`, and `orderEndpoint`.
-- Localize language, contact details, phone placeholder, legal notices, delivery, and currency to the GEO.
-- Add a real consent manager before loading Meta Pixel; currently the site only emits structured `dataLayer` events and does not load a pixel.
-- Put your own tested HTTPS backend at `orderEndpoint` (POST JSON) and ensure abuse protection and consent logging.
+## Keitaro
+В папке `keitaro-zips/` есть четыре независимых локальных архива. Каждый содержит корневые `index.html`, `config.js`, `app.js`, `styles.css`, `assets/` — относительные пути внутри этих архивов скорректированы.
 
-## Events
-`landing_view`, `cta_click`, `lead_validation_error`, `lead_submit_success`, `lead_submit_error`, `demo_form_attempt` are pushed to `window.dataLayer`. UTM parameters accompany the POST on the backend-enabled form.
+1. Создать кампанию `MX | Joint Health | FB` и настроить источник Meta.
+2. В Keitaro создать ОДИН поток с 4 LP или 4 потока по 25% (по выбранной конфигурации) — это **split в трекере**, не в Facebook. Для честного сплита задавать 25% каждому и удерживать веса неизменными до достаточного объёма.
+3. Загрузить `G1.zip`, `G2.zip`, `C1.zip`, `C2.zip` как локальные LP либо использовать внешние URLs `/mx/g1/` и т.д.; предпочтительнее локальные LP для исходного Keitaro subid.
+4. Отдельные реальные офферы SkyLead должны быть настроены в Keitaro, НЕ смешивать цену G1/G2/C1/C2 и не отправлять к неподходящему офферу. Связка offer/landing задаётся на стороне Keitaro.
+5. **Внимание:** SkyLead `offer_id` в конфигурации — ID из URL ПП, не внутренний offer_id Keitaro. Их нельзя считать взаимозаменяемыми.
+6. Настроить передачу уникального `{subid}` в поддерживаемый параметр SkyLead, затем SkyLead postback с `subid` и `status` обратно в Keitaro. Имя поля и формат postback нужно подтвердить в кабинете SkyLead, нельзя угадывать.
+7. `app.js` фиксирует `landing_view`, `order_cta_click`, `order_form_view`, `lead_form_success` или `lead_form_demo` через `dataLayer`. Demo-событие НЕ считается оплачиваемой конверсией.
+8. Если подаёте заявку напрямую через форму, требуется проверенный backend `orderEndpoint`, который принимает данные и направляет заказ на корректный API/endpoint SkyLead по offer_id + subid. Только успешный HTTP ответ даёт подтверждение.
+9. Другой вариант — перейти с LP по `{offer}` в отдельный Keitaro Offer с проверенной формой. Не делайте одновременно backend-форму и offer-click без продуманного учёта конверсий.
 
-## Constraints
-The page is not an official NOW Foods store. The example is a demo, not a live checkout. No invented reviews or medical cures. Pricing, availability, seller details, and policies must be supplied before launch. The existing page and images were inspected, JS passed syntax checks, but browser rendering could not be verified in this environment (Chromium returned `ERR_BLOCKED_BY_ADMINISTRATOR` on `file://` and `localhost`).
+Официальная документация: https://docs.keitaro.io/en/landing-pages-and-offers/creating-landing-page.html ; https://docs.keitaro.io/en/conversions-and-postback/postback.html
+
+## Перед реальным запуском — ОБЯЗАТЕЛЬНО
+- Открыть офферы SkyLead в кабинете и выгрузить реальные фото упаковок, точный состав, объём, использование и предупреждения. Сейчас SVG-упаковка **иллюстративная, не официальная**. Публичные страницы с идентичными названиями противоречат друг другу по составу.
+- Подтвердить стоимость доставки, способ оплаты, политику возврата, данные продавца, рабочий адрес и политику конфиденциальности. Не заявлять бесплатную доставку, оплату при получении или скидку без подтверждения.
+- Подключить настоящий приём лидов. По умолчанию форма **DEMO**, заявки никуда не отправляются.
+- Убедиться, что Meta объявление и все четыре целевые страницы соответствуют друг другу и видны одинаково пользователям и модерации. Не подменять контент для проверки.
+- Не отправлять медицинские данные, имена или телефоны в Meta Pixel; проверять согласие на обработку персональных данных.

@@ -1,0 +1,80 @@
+/* Datos exclusivos del offer C1. Edita solo este archivo para cambiar precio, copy e imágenes. */
+window.OFFER={
+  "eyebrow": "BIENESTAR ARTICULAR · MÉXICO",
+  "headline": "Que tus planes sigan en movimiento.",
+  "description": "Una caminata más larga. Un día activo con la familia. Tiempo para lo que te gusta. Conoce opciones de cuidado articular y elige con información clara, sin promesas milagrosas.",
+  "bullets": [
+    "Bienestar y movimiento",
+    "Información clara",
+    "Precio en MXN"
+  ],
+  "artTag": "Pensado para una vida activa",
+  "steps": [
+    {
+      "title": "Conoce qué estás eligiendo",
+      "text": "Revisa el tipo de producto, su precio y las indicaciones disponibles."
+    },
+    {
+      "title": "Consulta antes de comprar",
+      "text": "Confirma por teléfono la presentación exacta, los gastos de envío y la forma de pago."
+    },
+    {
+      "title": "Decide con tranquilidad",
+      "text": "Revisa ingredientes y advertencias de la etiqueta antes de usarlo."
+    }
+  ],
+  "orderEndpoint": "",
+  "metaPixelId": "",
+  "key": "C1",
+  "group": "capsules",
+  "product": "Wellnexis Joints",
+  "format": "CÁPSULAS · SUPLEMENTO",
+  "price": 590,
+  "payoutUsd": 25,
+  "ar": "25–30%",
+  "skyleadOfferId": "919",
+  "image": "../../assets/wellnexis-illustration.svg",
+  "productSubheading": "Una rutina de cuidado articular en cápsulas.",
+  "productDescription": "Wellnexis Joints se ofrece como suplemento en cápsulas. Para decidir con confianza, conoce la fórmula, la dosis indicada y el contenido del frasco en la ficha oficial de tu presentación.",
+  "features": [
+    "Formato oral en cápsulas",
+    "Consulta ingredientes y dosis exacta",
+    "Presentación y fórmula pendientes de validar con SkyLead"
+  ],
+  "warning": "Suplemento, no medicamento. Verifica ingredientes, dosis, alergias y contraindicaciones de la etiqueta.",
+  "useTitle": "Lo que importa antes de elegir cápsulas.",
+  "useDescription": "No todos los suplementos con nombres parecidos tienen la misma fórmula. La etiqueta exacta del SKU es la referencia para su composición y dosis.",
+  "ingredients": [
+    {
+      "name": "Suplemento en cápsulas",
+      "detail": "Confirma los ingredientes y cantidades en la etiqueta de Wellnexis Joints de SkyLead."
+    },
+    {
+      "name": "Dosis y contenido",
+      "detail": "Verifica el número de cápsulas por envase y la posología antes de comprar."
+    },
+    {
+      "name": "Precauciones",
+      "detail": "Si tomas medicamentos, estás embarazada o tienes enfermedades, consulta con un profesional."
+    }
+  ],
+  "formDescription": "Wellnexis Joints en cápsulas. Precio de la oferta: $590 MXN. Confirma presentación, envío y condiciones del pedido.",
+  "faqs": [
+    {
+      "q": "¿Cómo solicito información de mi pedido?",
+      "a": "Ingresa tu nombre y teléfono. La solicitud se confirma mediante contacto posterior cuando el servicio de pedidos esté habilitado."
+    },
+    {
+      "q": "¿El precio se muestra en pesos mexicanos?",
+      "a": "Sí, el precio indicado en la página está expresado en pesos mexicanos (MXN). Consulta posibles cargos de envío antes de confirmar."
+    },
+    {
+      "q": "¿La compra está confirmada al enviar el formulario?",
+      "a": "No. El formulario solicita contacto; los detalles y condiciones deben confirmarse antes de completar una compra."
+    },
+    {
+      "q": "¿Cuándo debo consultar con un profesional?",
+      "a": "Si las molestias son intensas, constantes o afectan tu movilidad, busca evaluación médica. Un producto cosmético o suplemento no reemplaza el diagnóstico ni tratamiento."
+    }
+  ]
+};
