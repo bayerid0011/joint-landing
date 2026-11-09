@@ -2,7 +2,7 @@
 window.HONDROVIX_CONFIG = {
   productId:'G2', skyLeadOfferId:'1670', name:'Hondrovix', category:'Gel para el cuidado de las articulaciones',
   price:590, currency:'MXN', volume:'50 ml', locale:'es-MX',
-  primaryImage:'assets/hondrovix-product.png', realImage:'assets/hondrovix-real.webp',
+  primaryImage:'assets/hondrovix-product-final.png', realImage:'assets/hondrovix-lifestyle.webp',
   ingredients:[
     {latin:'Arnica montana',title:'Árnica',detail:'Extracto botánico conocido por su uso tradicional en productos de masaje.'},
     {latin:'Mentha piperita',title:'Menta',detail:'Ingrediente aromático utilizado en fórmulas corporales de sensación fresca.'},
