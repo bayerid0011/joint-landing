@@ -1355,3 +1355,16 @@ section{
   .step2-block-col2-percent h3 { min-width: 75px; max-width: 85px; font-size: 25px; }
   .step2-block-col2-percent p { font-size: 13px; }
 }
+
+
+/* Clearer comparison cards for the Mexican Wellnexis offer */
+.solution-block { gap: 22px; }
+.solution-block h3 { font-size: clamp(21px, 2vw, 27px); line-height: 1.28; text-align: center; }
+.solution-block ul { width: 100%; }
+.solution-block ul li { display: list-item; padding-left: 30px; line-height: 1.5; margin: 14px 0; }
+.solution-block ul li::before { top: .78em; }
+@media (max-width: 799px) {
+  .solution-block { gap: 12px; }
+  .solution-block h3 { font-size: 20px; }
+  .solution-block ul li { font-size: 16px; margin: 12px 0; }
+}
