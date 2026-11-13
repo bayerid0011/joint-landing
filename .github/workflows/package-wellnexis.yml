@@ -1,0 +1,61 @@
+name: Package Wellnexis MX landings
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/package-wellnexis.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build standalone Wellnexis ZIP archives
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          from pathlib import Path
+          import shutil, zipfile
+          root=Path.cwd()
+          src=root/'mx'/'wellnexis-590'
+          second=root/'mx'/'wellnexis-789'/'index.html'
+          assert (src/'index.html').is_file() and (src/'css'/'style.css').is_file()
+          assert second.is_file()
+          out=root/'downloads'
+          out.mkdir(exist_ok=True)
+          tmp=root/'.wellnexis_packages'
+          if tmp.exists(): shutil.rmtree(tmp)
+          tmp.mkdir()
+          for price in ('590','789'):
+              dest=tmp/f'Wellnexis-{price}-MX'
+              shutil.copytree(src,dest)
+              if price=='789':
+                  page=second.read_text(encoding='utf-8')
+                  page=page.replace('../wellnexis-590/','')
+                  assert '../wellnexis-590/' not in page
+                  assert '590 mxn' not in page.lower()
+                  assert '789 mxn' in page.lower()
+                  (dest/'index.html').write_text(page,encoding='utf-8')
+              zpath=out/f'Wellnexis-{price}-MX.zip'
+              with zipfile.ZipFile(zpath,'w',compression=zipfile.ZIP_DEFLATED,compresslevel=7) as z:
+                  for f in sorted(dest.rglob('*')):
+                      if f.is_file():
+                          z.write(f,arcname=str(f.relative_to(dest)))
+              print(zpath.name, zpath.stat().st_size)
+          shutil.rmtree(tmp)
+          PY
+      - name: Commit downloadable archives
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add downloads/Wellnexis-590-MX.zip downloads/Wellnexis-789-MX.zip
+          if ! git diff --cached --quiet; then
+            git commit -m "Publish standalone Wellnexis 590 and 789 MXN archives"
+            git push
+          fi
